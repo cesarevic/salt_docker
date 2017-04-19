@@ -1,7 +1,7 @@
 ######
 # See: https://hub.docker.com/_/php/
 ######
-
+FROM ubuntu:16.04
 FROM php:5.6-fpm
 
 ######

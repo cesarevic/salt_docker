@@ -1,5 +1,5 @@
 # web server
-nginx_aaa:
+nginx:
   image: ubuntu:16:04
   image: nginx:latest
   ports:
@@ -15,10 +15,10 @@ nginx_aaa:
     - ./nginx/ca/server.crt/:/etc/nginx/server.crt:ro
     - ./nginx/ca/server.key/:/etc/nginx/server.key:ro
   links:
-    - php-fpm_aa:__DOCKER_PHP_FPM__
+    - php-fpm:__DOCKER_PHP_FPM__
 
 # php-fpm
-php-fpm_aa:
+php-fpm:
   build: ./php-fpm
   ports:
     - "9000"
@@ -34,10 +34,11 @@ php-fpm_aa:
     # - DB_USERNAME=
     # - DB_PASSWORD=
   links:
-    - bysq_aaa:bysq_aaa
+    - mysql:mysql
 
 # database
-bysq_aaa:
+mysql:
+  image: ubuntu:16:04
   image: mysql:latest
   ports:
     # Allow client to access 3306
